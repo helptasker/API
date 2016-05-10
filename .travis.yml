@@ -1,4 +1,5 @@
-sudo: false
+sudo: required
+dist: trusty
 language: perl
 perl:
   - "5.21"
@@ -11,17 +12,17 @@ install:
   - "cpanm --installdeps --notest ."
 services:
   - mysql
+addons:
+  hosts:
+    - helptasker.net
+  packages:
+    - mysql-server-5.6
+    - mysql-client-core-5.6
+    - mysql-client-5.6
 env:
   - "MOJO_TEST_TRAVIS=1"
 before_script:
-  - mysql -e 'create database test;'
+  - mysql -e "create database IF NOT EXISTS test;"
 after_script:
   - mysql -e 'drop database test;'
-notifications:
-  email:
-    on_success:change
-    on_failure:always
-branches:
-  only:
-    - master
-    - devel
+
