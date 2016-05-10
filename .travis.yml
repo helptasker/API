@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: perl
 perl:
   - "5.22"
@@ -30,3 +30,4 @@ before_script:
 after_script:
   - mysql -e 'drop database test;' -uroot
 
+# https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
