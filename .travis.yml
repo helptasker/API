@@ -22,7 +22,7 @@ addons:
 env:
   - "MOJO_TEST_TRAVIS=1"
 before_script:
-  - mysql -e "create database IF NOT EXISTS test;"
+  - mysql -e 'create database IF NOT EXISTS test;' -uroot
 after_script:
-  - mysql -e 'drop database test;'
+  - mysql -e 'drop database test;' -uroot
 
