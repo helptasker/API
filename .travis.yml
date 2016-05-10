@@ -25,6 +25,8 @@ addons:
     - helptasker.net
 env:
   - "MOJO_TEST_TRAVIS=1"
+before_install:
+  - curl -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.3.2/elasticsearch-2.3.2.deb && sudo dpkg -i --force-confnew elasticsearch-2.3.2.deb && sudo service elasticsearch restart
 before_script:
   - mysql -e 'create database IF NOT EXISTS test;' -uroot
 after_script:
