@@ -11,7 +11,9 @@ my $result = $t->get_ok('http://127.0.0.1:9200/_nodes');
 ok($result->tx->res->json->{'cluster_name'} eq 'elasticsearch', 'check version');
 
 # Mysql
+if(defined $ENV{'MOJO_TEST_TRAVIS'} && $ENV{'MOJO_TEST_TRAVIS'} == 1){
 
+}
 
 
 done_testing();
