@@ -24,5 +24,4 @@ if(defined $ENV{'MOJO_TEST_TRAVIS'} && $ENV{'MOJO_TEST_TRAVIS'} == 1){
 	$dbh->disconnect();
 }
 
-
 done_testing();
