@@ -18,7 +18,7 @@ if(defined $ENV{'MOJO_TEST_TRAVIS'} && $ENV{'MOJO_TEST_TRAVIS'} == 1){
 	$sth->execute();
 	while (my $ref = $sth->fetchrow_hashref()) {
 		my $version = $ref->{'version'};
-		like($version,qr/^5\.5\.[0-9]+/,'check mysql version =< 5.5');
+		like($version,qr/^5\.7\.[0-9]+/,'check mysql version =< 5.7');
 	}
 	$sth->finish();
 	$dbh->disconnect();
