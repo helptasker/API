@@ -34,8 +34,8 @@ before_install:
   - sudo apt-get install -y mysql-community-client mysql-community-server
 before_script:
   - mysql --version
-  - mysql -u root -e 'create database IF NOT EXISTS test;'
+  - sudo mysql -u root -e 'create database mydatabase;'
 after_script:
-  - mysql -u root -e 'drop database test;'
+  - mysql -u root -e 'drop database mydatabase;'
 
 # https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
