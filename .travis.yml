@@ -10,7 +10,6 @@ perl:
 install:
   - "cpanm --installdeps --notest ."
 services:
-  - mysql
   - memcached
   - elasticsearch
 addons:
@@ -34,8 +33,8 @@ before_install:
   - sudo apt-get install -y mysql-community-client mysql-community-server
 before_script:
   - mysql --version
-  - sudo mysql -u root -e 'create database mydatabase;'
+  - sudo mysql -u root -e 'create database test;'
 after_script:
-  - mysql -u root -e 'drop database mydatabase;'
+  - mysql -u root -e 'drop database test;'
 
 # https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
