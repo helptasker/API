@@ -26,11 +26,11 @@ env:
   - "MOJO_TEST_TRAVIS=1"
 before_install:
   - curl -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.3.2/elasticsearch-2.3.2.deb && sudo dpkg -i --force-confnew elasticsearch-2.3.2.deb && sudo service elasticsearch restart
-  - export MYSQL_APT_CONFIG_FILE=mysql-apt-config_0.7.2-1_all.deb
-  - wget http://dev.mysql.com/get/$MYSQL_APT_CONFIG_FILE
-  - sudo dpkg -i $MYSQL_APT_CONFIG_FILE
-  - sudo apt-get -y update
-  - sudo apt-get install -y mysql-community-client mysql-community-server
+#  - export MYSQL_APT_CONFIG_FILE=mysql-apt-config_0.7.2-1_all.deb
+#  - wget http://dev.mysql.com/get/$MYSQL_APT_CONFIG_FILE
+#  - sudo dpkg -i $MYSQL_APT_CONFIG_FILE
+#  - sudo apt-get -y update
+#  - sudo apt-get install -y mysql-community-client mysql-community-server
 before_script:
   - mysql --version
   - sudo mysql -u root -e 'create database test;'
