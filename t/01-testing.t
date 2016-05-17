@@ -25,11 +25,14 @@ $t->get_ok('/v1/testing/die/')->status_is(500);
 $t->json_like('/error'=> qr/^example\sdie\sat/,'Example die');
 
 note('param');
+my $url = Mojo::URL->new('/v1/testing/params/');
+$url->query({int=>1234567890});
+$url->query({miscellaneous_symbols_heart=>"\x{2665}"});
+$url->query({miscellaneous_symbols_umbrella_with_rain_drops=>"\x{2614}"});
+$url->query({string_cyrillic=>'Кириллица'});
+$url->query({string_roman_alphabet=>'Roman Alphabet'});
 
-my $query = "int=1234567890&miscellaneous_symbols_heart=\x{2665}&miscellaneous_symbols_umbrella_with_rain_drops=\x{2614}&";
-$query .= "string_cyrillic=Кириллица&string_roman_alphabet=Roman Alphabet";
-
-$t->get_ok("/v1/testing/params/?$query")->status_is(200);
+$t->get_ok($url)->status_is(200);
 $t->json_is('/int'=>1234567890);
 $t->json_is('/miscellaneous_symbols_heart'=>"\x{2665}");
 $t->json_is('/miscellaneous_symbols_umbrella_with_rain_drops'=>"\x{2614}");
